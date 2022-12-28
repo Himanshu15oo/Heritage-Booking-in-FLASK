@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/book.css') }}">
+    <title>History</title>
+</head>
+<body>
+   {% for x in  data  %}
+        <div class="elem-group">
+            <h2>-----------------------visit {{ loop.index }}------------------------------</h2>
+        </div>
+        <div class="elem-group">
+            <label for="v_name">Your Name</label>
+            <input type="text" id="name" name="v_name" value="{{x['name']}}" readonly>
+
+            <label for="v_heritage">Heritage</label>
+            <input type="text" id="heritage" name="v_heritage" value="{{x['heritage']}}" readonly>
+            
+            <label for="visitors">Visitors</label>
+            <input type="number" id="visitors" name="v_count" value="{{x['visitors']}}" readonly>
+
+            <label for="v_heritage">Date</label>
+            <input type="text" id="heritage" name="v_heritage" value="{{x['date']}}" readonly>
+        </div>
+    {% endfor %}
+</body>
+</html>

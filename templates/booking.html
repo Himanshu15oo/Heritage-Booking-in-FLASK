@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/book.css') }}">
+    <title>Booking_Form</title>
+    {% if msg %}
+    <script>
+        alert("{{msg}}")
+    </script>
+    {% endif %}
+</head>
+<body>
+    <form action="#" method="post">
+        <div class="elem-group">
+            <h2>---------------------- Your Details -----------------------</h2>
+        </div>
+        <div class="elem-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="v_name" placeholder="John Doe" pattern=[A-Z][a-z]{3,19}\s[A-Z][a-z]{3,19} required>
+        </div>
+        <div class="elem-group">
+            <label for="email">Your E-mail</label>
+            <input type="email" id="email" name="v_email" placeholder="john.doe@email.com" required>
+        </div>
+        <div class="elem-group">
+            <label for="phone">Your Phone</label>
+            <input type="tel" id="phone" name="v_phone" placeholder="498-348-3872"
+                pattern=(\d{10})) required>
+        </div>
+        <div class="elem-group">
+            <label for="heritage">Heritage</label>
+            <div class="elem-group">
+                <select class="form-control"  name="heritage" required>
+                <option value="">-- Select Heritage -- </option>
+                <option value="Taj Mahal">Tag Mahal</option>
+                <option value="Qutubh Minar">Qutubh Minar</option>
+                <option value="Bibi ka Makbara">Bibi ka Makbara</option>
+                <option value="Ajanta Elora Caves">Ajanta Elora Caves</option>
+            </select> 
+            </div>
+        </div>
+        <div class="elem-group">
+            <label for="visitors">Visitors</label>
+            <input type="number" id="visitors" name="v_count" placeholder="2" min="1" required>
+        </div>
+        <div class="elem-group">
+            <label for="booking_date">Date</label>
+            <input type="date" id="booking_date" name="v_date" required>
+        </div>
+        <hr>
+        <div class="elem-group">
+            <button type="submit">Book The Rooms</button>
+        </div>
+    </form>
+</body>
+</html>
