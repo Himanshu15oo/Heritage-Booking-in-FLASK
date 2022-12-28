@@ -15,40 +15,6 @@ uc = db.visitors
 
 pi = db.payment_info
 
-# def db_entry(request, month, date, people):
-#     heritage = hc.find_one({'name' : request.form['heritage']})
-#     exisiting_count = heritage[month][date]
-#     uc.insert_one(dict)
-
-#     hc.update_one(
-#     { "name": request.form['heritage']  },
-#     { "$set": { month + '.'+ str(date) : (exisiting_count + people) }}
-#     )
-    
-
-# def check_book(request):
-#     YMD = request.form['v_date'].split("-")
-#     date = int(YMD[2])
-#     month = YMD[1]
-#     people = int(request.form['v_count'])
-#     heritage = hc.find_one({'name' : request.form['heritage']})
-#     exisiting_count = heritage[month][date]
-
-#     if (exisiting_count > 300) or ((exisiting_count + people) > 300):
-#         return True
-#     else:
-#         dict = {
-#                 "name" : request.form['v_name'],
-#                 "email": request.form['v_email'],
-#                 "phone": request.form['v_phone'],
-#                 "heritage": request.form['heritage'],
-#                 "visitors": request.form['v_count'],
-#                 "date": request.form['v_date']
-#             }
-#         db_entry(request, month, date, people)
-#         return False
-
-
 
 @app.route("/home", methods=["POST", "GET"])
 def home():
@@ -127,7 +93,7 @@ def payment():
         )
         return  redirect(url_for("home"))
     else:
-        upi_string = "upi://pay?pa=himanshusangale-1@okicici&pn=HimanshuSangale&am=" + str(cost) + "&tn=Booking_For_" + monument + ""
+        upi_string = "Put your UPI string" + str(cost) + "&tn=Booking_For_" + monument + ""
         qr_url = pyqrcode.create(upi_string)
         qr_url.png("./static/img/pay.png", scale=8)
         return render_template('payment.html')
@@ -178,39 +144,6 @@ def bookingForm():
             
 
             return redirect(url_for("payment"))
-            # , userDict = dict, month = month, date = date, count = (exisiting_count + people), rate = rate, monument = monument)
-
-        # uc.insert_one(dict)
-
-        # hc.update_one(
-        # { "name": request.form['heritage']  },
-        # { "$set": { month + '.'+ str(date) : (exisiting_count + people) }}
-        # )
-
-        # dict = {
-        #     "name" : "Taj Mahal",
-        #     "01": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        #     "02": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        #     "03": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        #     "04": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        #     "05": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        #     "06": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        #     "07": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        #     "08": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        #     "09": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        #     "10": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        #     "11": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        #     "12": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-        # }
-        # hc.insert_one(dict)
-
-        # f = hc.find_one()
-
-        # DEBUG-----------------------
-        # print(month, file=sys.stderr)
-        # ----------------------------
-       
-        # return "Successful" 
     else:
         return render_template('booking.html')
 
